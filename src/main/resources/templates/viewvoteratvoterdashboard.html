@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-image: url('https://media.licdn.com/dms/image/C4E12AQE2y8mqQ7tb4g/article-cover_image-shrink_720_1280/0/1641439798446?e=2147483647&v=beta&t=oHf5seJFlaeKTLfeUDhl0dVhGSkqUGqEuObGrXC6x7A');
+            background-size: cover;
+            background-position: center;
+        }
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-custom .navbar-nav {
+            justify-content: center;
+            width: 100%;
+        }
+        .navbar-custom .nav-link {
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #0056b3;
+        }
+        .details-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            text-align: center;
+            margin: auto;
+            margin-top: 100px;
+        }
+        .details-container h2 {
+            margin-bottom: 20px;
+        }
+        .details-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .details-container table, th, td {
+            border: 1px solid #ccc;
+        }
+        .details-container th, .details-container td {
+            padding: 10px;
+            text-align: left;
+        }
+        .details-container th {
+            background-color: #f2f2f2;
+        }
+        .details-container a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .details-container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" style="color: black" href="#">Voter Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                 <li class="nav-item">
+                        <a class="nav-link" href="/voterdashborad">Dashboard</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/viewvoteratvoterdashboard">View Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/updatevoterform">Update Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/viewelectionatvoter">View Elections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="details-container">
+        <h2>View Voter Details</h2>
+        <div th:if="${voter != null}">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <td th:text="${voter.vid}"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td th:text="${voter.votername}"></td>
+                </tr>
+                <tr>
+                    <th>DOB</th>
+                    <td th:text="${voter.DOB}"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td th:text="${voter.gender}"></td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td th:text="${voter.username}"></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${voter == null}">
+            <p>No voter details found for the provided ID.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
